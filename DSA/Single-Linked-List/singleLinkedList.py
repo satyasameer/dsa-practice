@@ -208,6 +208,42 @@ class SingleLinkedList:
         self.head = prev
         self._validate()
         return True
+    
+    def find_middle(self):  ## O(n) time complexity
+        index = (self.length // 2) # 5//2 = 2
+        current = self.head
+        for _ in range(index):
+            current = current.next
+        return current
+    
+    def find_middle_algo(self): ## O(n) time complexity
+        slow = self.head
+        fast = self.head
+        while fast is not None and fast.next is not None:
+            slow = slow.next
+            fast = fast.next.next
+        return slow
+    
+    def remove_duplicates(self):
+        # TODO
+        if self.head is None:
+            return None
+        seen = set()
+        current = self.head
+        seen.add(current.value)
+        while current.next:
+            # print([value for value in seen], current.value)
+            if current.next.value not in seen:
+                seen.add(current.next.value)
+                current = current.next
+            else:
+                duplicate = current.next
+                current.next = duplicate.next
+                duplicate.next = None
+                self.length -= 1
+        self.tail = current
+            
+        
             
 
 # new_node = Node(10)
@@ -216,11 +252,18 @@ class SingleLinkedList:
 new_linked_list = SingleLinkedList(0)
 new_linked_list.append(10)
 new_linked_list.append(20)
+new_linked_list.append(20)
+new_linked_list.append(20)
 new_linked_list.append(30)
-new_linked_list.prepend(40)
+new_linked_list.append(20)
+new_linked_list.append(40)
+new_linked_list.append(50)
+new_linked_list.append(40)
+#new_linked_list.prepend(40)
 # new_linked_list.insert(5,50)
 # new_linked_list.insert(2,60)
-print(new_linked_list)
+# print(new_linked_list)
+# print(new_linked_list.find_middle_algo().value)
 #print(new_linked_list.search(50))
 #new_linked_list.traversal()
 #print(new_linked_list.get(2))
@@ -229,9 +272,11 @@ print(new_linked_list)
 # print(new_linked_list.pop())
 # print(new_linked_list.remove(6))
 # print(new_linked_list.tail.value)
-print(new_linked_list.reverse())
+#print(new_linked_list.reverse())
 # print(new_linked_list.head.value)
 # print(new_linked_list.tail.value)
+print(new_linked_list)
+print(new_linked_list.remove_duplicates())
 print(new_linked_list)
 
 
