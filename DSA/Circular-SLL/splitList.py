@@ -105,8 +105,8 @@ class CSLinkedList:
         second_list.tail = fast
 
         # print(head1, head2)
-        print(first_list)
-        print(second_list)
+        # print(first_list)
+        # print(second_list)
         return first_list, second_list
 
 cs_list = CSLinkedList()
