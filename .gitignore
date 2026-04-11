@@ -1,1 +1,8 @@
 *.code-workspace
+.DS_Store
+node_modules/
+dist/
+coverage/
+.env
+.vscode/
+.idea/  

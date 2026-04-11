@@ -49,7 +49,7 @@ class DoubleLinkedList:
         return True
 
 
-    def append(self, value):
+    def append(self, value):    ## O(1) time complexity
         new_node = Node(value)
         if self.tail is None:
             self.head = new_node
@@ -61,7 +61,7 @@ class DoubleLinkedList:
         self.length += 1
         self._validate()
 
-    def prepend(self, value):
+    def prepend(self, value):   ## O(1) time complexity
         new_node = Node(value)
         if self.head is None:
             self.head = new_node
@@ -73,7 +73,7 @@ class DoubleLinkedList:
         self.length += 1
         self._validate()
 
-    def insert(self, index, value):
+    def insert(self, index, value):   ## O(n) time complexity
         if index < 0 or index > self.length:
             return None
         elif index == 0:
@@ -96,7 +96,7 @@ class DoubleLinkedList:
 
 
 
-    def search(self, value):
+    def search(self, value): ## O(n) time complexity
         current = self.head
         while current:
             if current.value == value:
@@ -104,7 +104,7 @@ class DoubleLinkedList:
             current = current.next
         return False
 
-    def get(self, index):
+    def get(self, index): ## O(n) time complexity
         if index < 0 or index >= self.length:
             return -1
         if index < self.length // 2:
@@ -117,7 +117,7 @@ class DoubleLinkedList:
                 current = current.prev
         return current
 
-    def set(self, index, value):
+    def set(self, index, value): ## O(n) time complexity
         if index < 0 or index >= self.length:
             return False
         else:
@@ -128,6 +128,57 @@ class DoubleLinkedList:
                 return True
         return False
 
+    def popfirst(self):     ## O(1) time complexity
+        if self.head is None:
+            return None
+        elif self.length == 1:
+            self.head = None
+            self.tail = None
+        else:
+            del_node = self.head
+            del_node.next.prev = None
+            self.head = del_node.next
+            del_node.next = None
+        self.length -= 1
+        self._validate()
+    
+    def pop(self):  ## O(1) time complexity
+        if self.tail is None:
+            return
+        if self.length == 1:
+            self.head = None
+            self.tail = None
+        else:
+            del_node = self.tail
+            del_node.prev.next = None
+            self.tail = del_node.prev
+            del_node.prev = None
+        self.length -= 1
+        self._validate()
+
+
+
+    def remove(self, index): ## O(n) time complexity
+        if index < 0 or index >= self.length:
+            return None
+        if index == 0:
+            self.popfirst()
+            return True
+        if index == self.length -1:
+            self.pop()
+            return True
+        prev = self.head
+        for _ in range(index-1):
+            prev = prev.next
+        del_node = prev.next
+        prev.next = del_node.next
+        del_node.next.prev = prev
+        del_node.next = None
+        del_node.prev = None
+        self.length -= 1
+        self._validate()
+
+
 
 
 
@@ -137,8 +188,11 @@ dll = DoubleLinkedList()
 for i in range(5):
     dll.append(i*10)
 
-dll.prepend(-10)
+# dll.prepend(-10)
 print(dll)
 # print(dll.get(0).value)
 # print(dll.insert(6,15))
+# dll.popfirst()
+# dll.pop()
+dll.remove(4)
 print(dll)
