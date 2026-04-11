@@ -12,7 +12,6 @@ class Solution:
         dummy = ListNode(-1, head)
         oddHead = head
         evenHead = head.next
-        head1 = oddHead
         head2 = evenHead
         while evenHead and evenHead.next:
             oddHead.next = evenHead.next
@@ -22,6 +21,6 @@ class Solution:
         oddHead.next = head2
         #print(head1)
         #print(head2)
-        return head1
+        return head
 
         
