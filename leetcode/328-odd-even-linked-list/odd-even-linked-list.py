@@ -22,6 +22,6 @@ class Solution:
         oddHead.next = head2
         #print(head1)
         #print(head2)
-        return dummy.next
+        return head1
 
         
