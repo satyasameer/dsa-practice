@@ -8,15 +8,13 @@ class Solution:
     def sumOfLeftLeaves(self, root: Optional[TreeNode]) -> int:
         if root is None:
             return 0
-        current_sum = 0
 
         if root.left and not root.left.left and not root.left.right:
-            current_sum += root.left.val
-            left = 0
+            left = root.left.val
         else:
             left = self.sumOfLeftLeaves(root.left)
 
         right = self.sumOfLeftLeaves(root.right)
 
-        return current_sum + left + right
+        return left + right
         
