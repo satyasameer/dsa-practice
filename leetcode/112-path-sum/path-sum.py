@@ -11,10 +11,10 @@ class Solution:
         
         targetSum -= root.val
         
-        if not root.left and not root.right and targetSum==0:
-            return True
-        if not root.left and not root.right and targetSum!=0:
-            return False
+        if not root.left and not root.right:
+            return targetSum==0
+        #if not root.left and not root.right and targetSum!=0:
+        #    return False
         
         left = self.hasPathSum(root.left, targetSum)
         right = self.hasPathSum(root.right, targetSum)
