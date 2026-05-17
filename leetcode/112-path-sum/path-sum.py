@@ -17,6 +17,8 @@ class Solution:
         #    return False
         
         left = self.hasPathSum(root.left, targetSum)
+        if left:
+            return True
         right = self.hasPathSum(root.right, targetSum)
 
         return left or right
