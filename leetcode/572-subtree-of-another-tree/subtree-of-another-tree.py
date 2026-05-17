@@ -25,9 +25,9 @@ class Solution:
         if self.sameTree(root, subRoot):
             return True
         
-        left = self.isSubtree(root.left, subRoot)
-        if left:
-            return True
-        right = self.isSubtree(root.right, subRoot)
+        #left = self.isSubtree(root.left, subRoot)
+        #if left:
+        #    return True
+        #right = self.isSubtree(root.right, subRoot)
 
-        return left or right
+        return (self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot))
