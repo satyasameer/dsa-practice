@@ -4,7 +4,10 @@ class Solution:
     def canFinish(self, piles, h, speed):
         total_hours = 0
         for num in piles:
-            total_hours += ceil(num/speed)
+            # total_hours += ceil(num/speed)
+            total_hours += num//speed
+            if num%speed:
+                total_hours += 1
         return total_hours <= h
 
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
