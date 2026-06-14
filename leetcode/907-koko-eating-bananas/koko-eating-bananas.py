@@ -5,9 +5,10 @@ class Solution:
         total_hours = 0
         for num in piles:
             # total_hours += ceil(num/speed)
-            total_hours += num//speed
-            if num%speed:
-                total_hours += 1
+            # total_hours += num//speed
+            # if num%speed:
+            #     total_hours += 1
+            total_hours += (num+speed-1)//speed
         return total_hours <= h
 
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
