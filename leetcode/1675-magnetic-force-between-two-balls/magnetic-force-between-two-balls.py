@@ -15,7 +15,7 @@ class Solution:
 
     def maxDistance(self, position: List[int], m: int) -> int:
         left = 1
-        right = max(position) - min(position)
+        right = (max(position) - min(position))//(m-1)
         position.sort()
         while left < right:
             mid = (left+right+1)//2
