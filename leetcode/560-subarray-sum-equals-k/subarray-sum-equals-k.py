@@ -6,8 +6,7 @@ class Solution:
         for i, num in enumerate(nums):
             prefix_sum += num
             need = prefix_sum - k
-            if need in freq:
-                count += freq[need]
+            count += freq.get(need,0)
             freq[prefix_sum] = freq.get(prefix_sum, 0) + 1
             # print(freq, prefix_sum, count)
         return count
